@@ -14,7 +14,8 @@
   <!-- Fonts (same families the template already loads) -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Raleway:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Shared site typography (blackletter display font + book serif) -->
+  <link href="assets/css/fonts.css" rel="stylesheet">
 
   <!--
     ============================================================
@@ -32,7 +33,7 @@
       "video" -> plays your looping logo video
       "spin"  -> spins a static logo image with CSS (no video needed)
 
-    ENTER_URL is where "Proceed?" and the logo send visitors.
+    ENTER_URL is where the entry phrase and the logo send visitors.
     ============================================================
   -->
 
@@ -52,7 +53,7 @@
       height: 100%;
       background: var(--bg);
       color: var(--text);
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: var(--default-font, "EB Garamond", "Times New Roman", serif);
       overflow: hidden;
     }
 
@@ -118,23 +119,25 @@
 
     /* ---------- "Proceed?" ---------- */
     .proceed {
-      font-family: "Raleway", sans-serif;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 2.4vw, 1.6rem);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
+      font-family: var(--display-font, "UnifrakturMaguntia", "Times New Roman", serif);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4.2vw, 3rem);
+      letter-spacing: 0.02em;       /* blackletter needs tight spacing */
+      text-transform: none;         /* never all-caps with blackletter */
+      line-height: 1.2;
       color: var(--text);
       text-decoration: none;
-      padding: 0.6em 1.2em 0.6em 1.6em; /* extra left pad balances letter-spacing */
+      padding: 0.2em 0.4em;
       border-bottom: 1px solid transparent;
+      text-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
       animation: pulse 3s ease-in-out infinite;
-      transition: color 0.3s ease, border-color 0.3s ease, letter-spacing 0.4s ease;
+      transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
     }
     .proceed:hover,
     .proceed:focus-visible {
       color: var(--accent);
       border-color: var(--accent);
-      letter-spacing: 0.5em;
+      text-shadow: 0 0 24px var(--glow);
       animation-play-state: paused;
     }
 
@@ -188,7 +191,7 @@
       <img class="logo-img" src="assets/img/logo.png" alt="">
     </a>
 
-    <a class="proceed js-enter" href="home.html">Proceed?</a>
+    <a class="proceed js-enter" href="home.html">Unsheathe your heart?</a>
   </main>
 
   <script>
