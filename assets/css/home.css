@@ -1,0 +1,242 @@
+/* ==============================================================
+   Excalibur — Home page layout
+   --------------------------------------------------------------
+   Load on home.html only, AFTER main.css and fonts.css:
+     <link href="assets/css/home.css" rel="stylesheet">
+
+   Quick settings you can tweak are in :root below.
+   ============================================================== */
+
+:root {
+  --hero-zoom: 1;                /* 1 = whole video frame; raise (e.g. 1.2) for a closer crop */
+  --hero-focus: 65% 20%;         /* which part of the video stays in frame if it gets cropped (x% y%) */
+  --header-h: 80px;              /* height of the fixed menu bar; desktop video starts below it */
+  --block-title-font: var(--heading-font);   /* Cinzel. Swap to "Times New Roman", serif if you prefer */
+  --block-min-height: 75vh;
+  --btn-border: rgba(255, 255, 255, 0.85);
+  --btn-hover-bg: #ffffff;
+  --btn-hover-text: #000000;
+}
+
+/* Stops AOS zoom animations from creating sideways scrolling on phones */
+.index-page main.main { overflow-x: clip; }
+
+/* ---------------- 1. Hero (video + artist name) ---------------- */
+#hero {
+  justify-content: flex-start;   /* template centered it; we want the name on the left */
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;            /* accounts for phone browser toolbars */
+}
+
+/* The bug: the template only styled ".hero img", so the <video> rendered at
+   its native 1920px width and pushed the text off screen. */
+#hero .hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--hero-focus);
+  transform: scale(var(--hero-zoom));
+  transform-origin: var(--hero-focus);
+  z-index: 1;
+}
+
+/* Soft dark fade on the left so the name always reads over the footage */
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+}
+
+#hero .container { text-align: left; }
+
+#hero h2 {
+  font-family: var(--display-font);       /* blackletter stays for your name */
+  font-weight: 400;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 1;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.7);
+}
+
+#hero p { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8); }
+
+/* Rotating title line under the name (replaces the typing effect) */
+.hero-titles {
+  position: relative;
+  display: block;
+  height: 1.6em;
+  margin-top: 0.6rem !important;
+  font-family: var(--heading-font) !important;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.6vw, 1.3rem) !important;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.hero-titles span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  border: 0 !important;
+  letter-spacing: inherit !important;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;   /* old title fades out first */
+}
+
+.hero-titles span.is-active {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;   /* new title fades in after */
+}
+
+/* thin sky-blue rule under the titles */
+.hero-titles::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.55em;
+  width: 3.5em;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* ---------------- 2. Image blocks (Music/Bio, Shows, Gallery) ---------------- */
+.home-block {
+  position: relative;
+  min-height: var(--block-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 20px;
+  text-align: center;
+  isolation: isolate;
+}
+
+.home-block > .block-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 1.2s ease;
+}
+
+/* Darkening layer for legibility */
+.home-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.38);
+  transition: background 0.4s ease;
+}
+
+.home-block:hover > .block-bg { transform: scale(1.04); }
+.home-block:hover::before   { background: rgba(0, 0, 0, 0.5); }
+
+.block-content { position: relative; }
+
+.block-title {
+  font-family: var(--block-title-font);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  margin: 0 0 1.4rem;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.75);
+}
+
+/* Small box button under each title */
+.block-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;              /* comfortable tap size on phones */
+  padding: 0.7em 1.8em;
+  border: 1px solid var(--btn-border);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.block-btn:hover,
+.block-btn:focus-visible {
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+}
+
+.block-btn:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+/* Split block: two halves side by side */
+.home-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: var(--block-min-height);
+}
+
+.home-split { padding: 0; }   /* template adds 60px padding to every section; that left a dark gap */
+.home-split .home-block { min-height: inherit; }
+
+/* ---------------- 3. Tablet and phone adjustments ---------------- */
+/* Desktop and tablet: show the full 16:9 video frame below the menu bar.
+   The section is taller than most screens, so there is a little scroll,
+   like the original layout. */
+@media (min-width: 769px) {
+  #hero {
+    min-height: calc(var(--header-h) + 56.25vw);   /* 56.25vw = 16:9 at full width */
+    padding-top: calc(var(--header-h) + 40px);
+  }
+  #hero .hero-video {
+    top: var(--header-h);
+    height: calc(100% - var(--header-h));
+  }
+  #hero::after { top: var(--header-h); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --hero-focus: 72% 50%;       /* phones are tall and narrow: keep the silhouette in frame */
+    --block-min-height: 60svh;
+  }
+
+  /* Name sits low on the screen over a bottom fade instead of the left fade */
+  #hero { align-items: flex-end; padding-bottom: 14vh; }
+  #hero::after {
+    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0) 70%);
+  }
+  #hero p { font-size: 1.15rem; }
+
+  /* Music and Bio stack on top of each other */
+  .home-split { grid-template-columns: 1fr; }
+
+  .home-block { padding: 60px 16px; }
+  .block-title { letter-spacing: 0.05em; }
+  .block-btn { font-size: 0.85rem; letter-spacing: 0.14em; }
+
+  /* No hover on touch screens, so keep the darker overlay on */
+  .home-block::before { background: rgba(0, 0, 0, 0.45); }
+}
+
+/* Respect "reduce motion" settings */
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero-video { display: none; }
+  .hero-titles span { transition: none; }
+  #hero { background: #000 url("../img/hero-poster.jpg") var(--hero-focus) / cover no-repeat; }
+  .home-block > .block-bg { transition: none; }
+}

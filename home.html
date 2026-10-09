@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Personal Bootstrap Template</title>
+  <title>Excalibur</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -26,6 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet"> <link href="assets/css/fonts.css" rel="stylesheet">
+  <link href="assets/css/home.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Personal
@@ -43,7 +44,7 @@
 
       <a href="home.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo-name.png" alt="">
+        <img src="assets/img/logo-name.png" alt="Excalibur">
         <!--<h1 class="sitename">Excalibur</h1>-->
       </a>
 
@@ -67,67 +68,87 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <video autoplay muted loop data-aos="fade-in">
+      <!-- playsinline is required for autoplay on iPhones; poster shows while the video loads -->
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata"
+             poster="assets/img/hero-poster.jpg" aria-hidden="true">
         <source src="assets/img/hero-bg.mp4" type="video/mp4">
       </video>
 
-      <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <div class="container" data-aos="fade-right" data-aos-delay="100">
         <h2>Excalibur</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span><span class="typed-cursor typed-cursor--blink"></span></p>
+        <!-- Rotating titles: edit, add, or remove <span> lines. One line = a static tagline. -->
+        <p class="hero-titles">
+          <span class="is-active">Artist</span>
+          <span>Producer</span>
+          <span>Performer</span>
+        </p>
         <div class="social-links">
-          <a href="#"><i class="bi bi-twitter-x"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-instagram"></i></a>
-          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="https://x.com/Excalibur707?s=09" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://www.facebook.com/david.camper.2025/" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/excalibur_707/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/@OfficialExcalibur707" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
 
     </section><!-- /Hero Section -->
 
-    <!-- Split Section2222 -->
-    <section id="hero" class="hero section dark-background">
+    <!-- Music / Bio Split Section -->
+    <section id="music-bio" class="home-split dark-background">
 
-      <img src="assets/img/split-selections.png" alt="" data-aos="fade-in">
-
-      <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h2>MUSIC</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span><span class="typed-cursor typed-cursor--blink"></span></p>
+      <div class="home-block">
+        <img class="block-bg" src="assets/img/home-music.jpg" alt="" loading="lazy">
+        <div class="block-content" data-aos="fade-up">
+          <h2 class="block-title">MUSIC</h2>
+          <a class="block-btn" href="resume.html">Listen Now</a>
+        </div>
       </div>
 
-    </section><!-- /Split Section2222 -->
+      <div class="home-block">
+        <img class="block-bg" src="assets/img/home-bio.jpg" alt="" loading="lazy">
+        <div class="block-content" data-aos="fade-up" data-aos-delay="100">
+          <h2 class="block-title">BIO</h2>
+          <a class="block-btn" href="about.html">Read the Legend</a>
+        </div>
+      </div>
+
+    </section><!-- /Music / Bio Split Section -->
 
     <!-- Shows Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="assets/img/shows.png" alt="" data-aos="fade-in">
-
-      <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h2>SHOWS</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span><span class="typed-cursor typed-cursor--blink"></span></p>
-        
+    <section id="shows" class="home-block dark-background">
+      <img class="block-bg" src="assets/img/shows.png" alt="" loading="lazy">
+      <div class="block-content" data-aos="fade-up">
+        <h2 class="block-title">SHOWS</h2>
+        <a class="block-btn" href="services.html">See Dates</a>
       </div>
-
     </section><!-- /Shows Section -->
 
-    <!-- Visuals Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="assets/img/visuals.png" alt="" data-aos="fade-in">
-
-      <div class="container" data-aos="zoom-out" data-aos-delay="100">
-        <h2>VISUALS</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span><span class="typed-cursor typed-cursor--blink"></span></p>
-        
+    <!-- Gallery Section -->
+    <section id="gallery" class="home-block dark-background">
+      <img class="block-bg" src="assets/img/visuals.png" alt="" loading="lazy">
+      <div class="block-content" data-aos="fade-up">
+        <h2 class="block-title">GALLERY</h2>
+        <a class="block-btn" href="portfolio.html">View Gallery</a>
       </div>
-
-    </section><!-- /Visuals Section -->
+    </section><!-- /Gallery Section -->
 
   </main>
 
   <footer id="footer" class="footer dark-background">
     <div class="container">
-      <h3 class="sitename">Personal</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+      <h3 class="sitename">A Rested Version</h3>
+      <p>The version of me that needs rest feels like folklore,<br>
+        As if that version of myself was buried under deadlines, landlines and linebreaks,<br>
+        Wivestales of sleep, told lovingly, but fall on deaf ears,<br>
+        I can hear it now...<br>
+      <br>
+        Wivestales of sleep, told lovingly, but fall on deaf ears,<br>
+        I can hear it now...<br>
+      <br>
+      Despite my nocturnal habits, I've got the head of an OX,<br> 
+      And won't realize that version of me is not the distant memory I make it out to be,<br>
+      The version of me that needs rest exists,<br>
+      Not in distant memory, but in the mirror.<br>
+      -Ex </p>
       <div class="social-links d-flex justify-content-center">
         <a href=""><i class="bi bi-twitter-x"></i></a>
         <a href=""><i class="bi bi-facebook"></i></a>
@@ -170,6 +191,22 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Hero title rotator: fades between the titles under the artist name -->
+  <script>
+    (function () {
+      const items = document.querySelectorAll('.hero-titles span');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (items.length < 2 || reduce) return;
+      const SECONDS_PER_TITLE = 3;
+      let i = 0;
+      setInterval(function () {
+        items[i].classList.remove('is-active');
+        i = (i + 1) % items.length;
+        items[i].classList.add('is-active');
+      }, SECONDS_PER_TITLE * 1000);
+    })();
+  </script>
 
 </body>
 

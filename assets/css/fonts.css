@@ -11,8 +11,8 @@
 
    Three tiers:
      --display-font  Blackletter. Big artistic moments only:
-                     landing phrase, hero name, section titles,
-                     site name. Never for paragraphs.
+                     landing phrase and the artist name.
+                     Never for section titles or paragraphs.
      --heading-font  Engraved roman capitals. All other headings
                      (card titles, resume items, etc.). Medieval
                      feel, still readable at small sizes.
@@ -48,7 +48,6 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------- Display tier: blackletter, used sparingly ---------- */
 .display-font,
 .hero h2,
-.section-title h2,
 .header .logo .sitename,
 .footer .sitename {
   font-family: var(--display-font);
@@ -57,9 +56,12 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none;      /* all-caps blackletter is very hard to read */
 }
 
-/* Template draws a small line under section titles; keep it centered */
+/* Section titles on inner pages: bold engraved caps (blackletter was too hard to read) */
 .section-title h2 {
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-family: var(--heading-font);
+  font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  letter-spacing: 0.06em;
   line-height: 1.15;
 }
 
