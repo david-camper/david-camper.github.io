@@ -1,0 +1,220 @@
+/* ==============================================================
+   Excalibur — Bio / EPK page
+   --------------------------------------------------------------
+   Load on about.html only, AFTER main.css and fonts.css:
+     <link href="assets/css/bio.css" rel="stylesheet">
+
+   Desktop: the photo stays pinned to the screen while the bio
+            text scrolls up over the left side.
+   Phones:  the portrait photo shows first, then the text below
+            on a dark background.
+   ============================================================== */
+
+:root {
+  --header-h: 80px;
+  --bio-focus: 75% 12%;          /* part of the desktop photo kept in frame if it gets cropped */
+  --bio-col: 640px;              /* width of the text column on desktop */
+  --bio-text-size: 1.2rem;       /* about 19px; raise or lower to taste */
+  --bio-bg-dark: #0b0d12;        /* solid background behind text on phones */
+}
+
+/* Darker menu bar so the links stay readable over the bright sky in the photo */
+.about-page .header {
+  --background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.about-page main.main { overflow-x: clip; }
+
+/* ---------------- Pinned photo layer ---------------- */
+.bio-stage {
+  position: relative;
+  background: #000;
+  padding: 0;                    /* the template adds 60px to every section */
+}
+
+.bio-bg {
+  position: sticky;              /* stays on screen while the text scrolls */
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bio-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--bio-focus);
+  display: block;
+}
+
+/* Strong dark fade on the left: the photo is bright there, so text needs it */
+.bio-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(5, 7, 12, 0.92) 0%,
+      rgba(5, 7, 12, 0.85) 35%,
+      rgba(5, 7, 12, 0.45) 55%,
+      rgba(5, 7, 12, 0) 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 20%);
+  pointer-events: none;
+}
+
+/* ---------------- Text column ---------------- */
+.bio-content {
+  position: relative;
+  z-index: 1;
+  margin-top: -100vh;            /* pulls the text up on top of the pinned photo */
+  margin-top: -100svh;
+  padding: calc(var(--header-h) + 12vh) 0 18vh;
+}
+
+.bio-column {
+  max-width: var(--bio-col);
+  margin-left: max(24px, calc((100vw - 1320px) / 2 + 12px));   /* lines up with the menu logo */
+  margin-right: 24px;
+}
+
+.bio-title {
+  font-family: var(--heading-font);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0 0 0.3em;
+  color: #fff;
+}
+
+.bio-kicker {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin: 0 0 2.2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.bio-kicker::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5em;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+.bio-text p {
+  font-family: var(--default-font);
+  font-size: var(--bio-text-size);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1.4em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Slightly larger opening paragraph */
+.bio-text p:first-child {
+  font-size: calc(var(--bio-text-size) * 1.12);
+  color: #fff;
+}
+
+/* ---------------- EPK / booking ---------------- */
+.bio-epk {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.bio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 44px;
+  padding: 0.7em 1.8em;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.bio-btn:hover,
+.bio-btn:focus-visible {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #000;
+}
+
+.bio-btn:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+
+.bio-booking {
+  font-family: var(--default-font);
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.bio-booking a { color: var(--accent-color); }
+
+/* ---------------- Phones ---------------- */
+@media (max-width: 768px) {
+  /* Photo first, at its own 4:5 shape, then the text below */
+  .bio-bg {
+    position: relative;
+    height: auto;
+    margin-top: var(--header-h-mobile, 64px);   /* keeps his head clear of the menu bar */
+  }
+
+  .bio-bg img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-position: 50% 30%;
+  }
+
+  /* Fade the bottom of the photo into the text area */
+  .bio-bg::after {
+    background: linear-gradient(0deg, var(--bio-bg-dark) 0%, rgba(11, 13, 18, 0) 35%);
+  }
+
+  .bio-content {
+    margin-top: 0;
+    padding: 0 0 4rem;
+    background: var(--bio-bg-dark);
+  }
+
+  .bio-column {
+    margin: 0;
+    padding: 0 20px;
+    max-width: none;
+    position: relative;
+    top: -2.2rem;                /* title overlaps the bottom of the photo slightly */
+  }
+
+  .bio-text p { font-size: 1.1rem; text-shadow: none; }
+  .bio-text p:first-child { font-size: 1.18rem; }
+
+  .bio-epk { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-btn { transition: none; }
+}
