@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gallery | Excalibur</title>
+  <meta name="description" content="Portraits and live performance photos of Excalibur.">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet"> <link href="assets/css/fonts.css" rel="stylesheet">
+  <link href="assets/css/gallery.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Personal
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Updated: Mar 05 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="gallery-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="home.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/logo-name.png" alt="Excalibur">
+        <!--<h1 class="sitename">Excalibur</h1>-->
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">Bio</a></li>
+          <li><a href="resume.html">Music</a></li>
+          <li><a href="services.html">Shows</a></li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section dark-background">
+      <div class="container">
+
+        <div class="gallery-head">
+          <h1 class="gallery-title">GALLERY</h1>
+          <p class="gallery-kicker">Excalibur</p>
+        </div>
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="fitRows" data-sort="original-order">
+
+          <!-- Filter buttons. data-filter must match the filter-... class on each photo below. -->
+          <ul class="gallery-filters isotope-filters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-portrait">Portrait</li>
+            <li data-filter=".filter-performance">Performance</li>
+          </ul>
+
+          <div class="row gallery-grid gy-3 isotope-container">
+
+            <!-- ==========================================================
+                 HOW TO ADD A PHOTO
+                 1. Crop it to 4:5 (1200 x 1500), save as JPG in assets/img/gallery/
+                    named portrait-04.jpg, performance-04.jpg, and so on.
+                 2. Copy one block below (from <div class="col-lg-4 ..."> to its </div>)
+                    and paste it where you want it to appear in the grid.
+                 3. Change BOTH file paths (href and src) to the new file name.
+                 4. Category: use filter-portrait OR filter-performance on the div,
+                    and the matching data-gallery="portrait" or "performance".
+                 5. Edit data-title (lightbox caption) and the tile-title text.
+                 Optional: if a crop cuts off your head, add style="--focus: 50% 10%"
+                 to the <img> (first number = left/right, second = up/down).
+                 ========================================================== -->
+
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-01.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-01.jpg" alt="Excalibur, portrait 1" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 1</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-02.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-02.jpg" alt="Excalibur, portrait 2" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 2</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-03.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-03.jpg" alt="Excalibur, portrait 3" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 3</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-performance">
+              <a href="assets/img/gallery/performance-01.jpg" class="gallery-tile glightbox" data-gallery="performance" data-title="Live performance 1">
+                <img src="assets/img/gallery/performance-01.jpg" alt="Excalibur, live performance 1" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Performance</span><span class="tile-title">Live performance 1</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-performance">
+              <a href="assets/img/gallery/performance-02.jpg" class="gallery-tile glightbox" data-gallery="performance" data-title="Live performance 2">
+                <img src="assets/img/gallery/performance-02.jpg" alt="Excalibur, live performance 2" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Performance</span><span class="tile-title">Live performance 2</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-performance">
+              <a href="assets/img/gallery/performance-03.jpg" class="gallery-tile glightbox" data-gallery="performance" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/performance-03.jpg" alt="Excalibur, live performance 3" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Performance</span><span class="tile-title">Live performance 3</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-04.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-04.jpg" alt="Excalibur, portrait 4" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 4</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-05.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-05.jpg" alt="Excalibur, portrait 5" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 5</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-06.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-06.jpg" alt="Excalibur, portrait 6" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 6</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-07.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-07.jpg" alt="Excalibur, portrait 7" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 7</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-08.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-08.jpg" alt="Excalibur, portrait 8" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 8</span></span>
+              </a>
+            </div>
+            <div class="col-lg-4 col-6 isotope-item filter-portrait">
+              <a href="assets/img/gallery/portrait-09.jpg" class="gallery-tile glightbox" data-gallery="portrait" data-title="Photo by C. Will">
+                <img src="assets/img/gallery/portrait-09.jpg" alt="Excalibur, portrait 9" loading="lazy">
+                <span class="tile-info"><span class="tile-cat">Portrait</span><span class="tile-title">Portrait 9</span></span>
+              </a>
+            </div>
+
+          </div><!-- End gallery grid -->
+
+        </div>
+
+      </div>
+    </section><!-- /Gallery Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <h3 class="sitename">A Rested Version</h3>
+      <p>The version of me that needs rest feels like folklore,<br>
+        As if that version of myself was buried under deadlines, landlines and linebreaks,<br>
+        Wivestales of sleep, told lovingly, but fall on deaf ears,<br>
+        I can hear it now...<br>
+      <br>
+      Despite my nocturnal habits, I've got the head of an Ox,<br> 
+      And won't realize that version of me is not the distant memory I make it out to be,<br>
+      The version of me that needs rest exists,<br>
+      Not in distant memories, but in the mirror.<br>
+      -Ex </p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://x.com/Excalibur707?s=09"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/david.camper.2025/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/excalibur_707/"><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href="https://www.linkedin.com/in/excalibur707/"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">Personal</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you've purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
