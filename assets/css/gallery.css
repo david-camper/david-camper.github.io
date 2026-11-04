@@ -1,0 +1,204 @@
+/* ==============================================================
+   Excalibur — Gallery page
+   --------------------------------------------------------------
+   Load on gallery.html only, AFTER main.css and fonts.css:
+     <link href="assets/css/gallery.css" rel="stylesheet">
+
+   Rows of three on desktop, two on tablets and phones.
+   Every tile is cropped to the same shape so the rows line up;
+   clicking a tile opens the full, uncropped photo in a lightbox.
+   ============================================================== */
+
+:root {
+  --header-h: 80px;
+  --tile-ratio: 4 / 5;           /* tile shape; matches the recommended 1200x1500 crop */
+  --tile-gap: 18px;
+}
+
+/* Darker menu bar, same as the Bio page */
+.gallery-page .header {
+  --background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ---------------- Section ---------------- */
+.gallery-section {
+  position: relative;
+  padding: calc(var(--header-h) + 9vh) 0 12vh;
+  background:
+    radial-gradient(1100px 520px at 85% -10%, rgba(98, 198, 255, 0.10), transparent 70%),
+    #05070c;
+  min-height: 100vh;
+}
+
+.gallery-head {
+  margin-bottom: 2.6rem;
+}
+
+/* Same title treatment as the Bio page */
+.gallery-title {
+  font-family: var(--heading-font);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0 0 0.3em;
+  color: #fff;
+}
+
+.gallery-kicker {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin: 0;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.gallery-kicker::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.5em;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* ---------------- Filters ---------------- */
+.gallery-filters {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+}
+
+.gallery-filters li {
+  cursor: pointer;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 0.5em 0;
+  min-height: 44px;              /* comfortable tap target */
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  user-select: none;
+}
+
+.gallery-filters li:hover { color: #fff; }
+
+.gallery-filters li.filter-active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+/* ---------------- Grid ---------------- */
+.gallery-grid {
+  --bs-gutter-x: var(--tile-gap);
+  --bs-gutter-y: var(--tile-gap);
+}
+
+.gallery-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: var(--tile-ratio);
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gallery-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, 50% 30%);   /* override per photo with style="--focus: 50% 10%" */
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+/* Caption that fades in on hover */
+.gallery-tile .tile-info {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.2rem 1rem 0.9rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.tile-info .tile-cat {
+  display: block;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.tile-info .tile-title {
+  display: block;
+  font-family: var(--default-font);
+  font-size: 1.05rem;
+  color: #fff;
+  margin-top: 0.2rem;
+}
+
+.gallery-tile::after {          /* sky blue edge glow on hover */
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 2px var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.gallery-tile:hover img,
+.gallery-tile:focus-visible img { transform: scale(1.04); filter: brightness(0.9); }
+
+.gallery-tile:hover .tile-info,
+.gallery-tile:focus-visible .tile-info { opacity: 1; transform: none; }
+
+.gallery-tile:hover::after,
+.gallery-tile:focus-visible::after { opacity: 1; }
+
+.gallery-tile:focus-visible { outline: none; }
+
+/* Lightbox caption in the site fonts */
+.glightbox-clean .gslide-title {
+  font-family: var(--heading-font);
+  letter-spacing: 0.08em;
+}
+
+/* ---------------- Phones ---------------- */
+@media (max-width: 768px) {
+  :root { --tile-gap: 10px; }
+
+  .gallery-section { padding-top: calc(64px + 2.5rem); }
+
+  .gallery-filters { gap: 0.2rem 1.4rem; }
+  .gallery-filters li { font-size: 0.85rem; }
+
+  /* No hover on touch screens, so captions stay hidden; tapping opens the photo */
+  .gallery-tile .tile-info { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-tile img,
+  .gallery-tile .tile-info,
+  .gallery-tile::after { transition: none; }
+  .gallery-tile:hover img { transform: none; }
+}
